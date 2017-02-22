@@ -1,0 +1,210 @@
+/* http://meyerweb.com/eric/tools/css/reset/
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+img {
+  border: 0;
+  height: auto;
+  max-width: 100%;
+  width: 100%; }
+
+*, *:before, *:after {
+  box-sizing: border-box; }
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline; }
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block; }
+
+body {
+  line-height: 1; }
+
+ol, ul {
+  list-style: none; }
+
+blockquote, q {
+  quotes: none; }
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none; }
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0; }
+
+body {
+  color: #485774;
+  font: 16px/1.6 helvetica; }
+
+button {
+  color: #F6FAFD;
+  font: 16px/1.6 helvetica; }
+
+caption {
+  color: #787967;
+  font: 800 2rem helvetica; }
+
+table th {
+  color: #F6FAFD; }
+
+.add-item-form h2 {
+  font-size: 2rem;
+  text-decoration: underline; }
+
+.add-item-form input {
+  color: #485774;
+  font: 16px/1.6 helvetica; }
+
+.add-item-form .add-item-submit:hover {
+  color: #485774; }
+
+.login-form input {
+  color: #485774;
+  font: 16px/1.6 helvetica; }
+
+.login-form button:hover {
+  color: #485774; }
+
+body {
+  background: #F6FAFD;
+  position: relative; }
+
+header {
+  position: relative; }
+  header .welcome-container {
+    position: absolute;
+    right: 2rem;
+    top: 2rem; }
+
+.login-form {
+  align-items: center;
+  flex-direction: column;
+  margin: 4rem auto;
+  width: 50%; }
+  .login-form input {
+    margin-bottom: 1rem;
+    width: 85%; }
+  .login-form button {
+    background: #485774;
+    border: none;
+    cursor: pointer;
+    width: 85%; }
+    .login-form button:disabled {
+      cursor: not-allowed; }
+    .login-form button:hover {
+      background: #EAEFF3;
+      border: 1px solid #485774; }
+
+.toggles-container {
+  left: 2rem;
+  position: absolute;
+  top: 2rem;
+  z-index: 100; }
+  .toggles-container .nation-toggle, .toggles-container .form-toggle {
+    background: #485774;
+    border: none;
+    cursor: pointer;
+    height: 60px;
+    width: 80px; }
+
+table {
+  margin: 3rem auto;
+  position: absolute;
+  right: 50%;
+  transform: translateX(50%); }
+  table caption {
+    margin-bottom: .5rem; }
+  table tr {
+    height: 2rem;
+    padding: 1rem 2rem; }
+    table tr:first-of-type {
+      padding: 0; }
+      table tr:first-of-type th {
+        background: #485774;
+        padding: 1rem 2rem; }
+    table tr:nth-of-type(1n+1) {
+      background: #EAEFF3; }
+    table tr:nth-of-type(2n+1) {
+      background: #DCE7ED; }
+    table tr th {
+      border: 2px solid #F6FAFD;
+      cursor: pointer; }
+    table tr td {
+      border: 2px solid #F6FAFD;
+      padding: 1rem 2rem; }
+      table tr td:last-of-type {
+        text-align: center; }
+        table tr td:last-of-type img {
+          width: 50%; }
+
+.add-item-form {
+  align-items: center;
+  background: #DCE7ED;
+  flex-direction: column;
+  left: 50%;
+  padding-top: .5rem;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, 2rem);
+  width: 50%; }
+  .add-item-form input {
+    background: #EAEFF3;
+    border: 1px solid #485774;
+    margin: 1rem;
+    width: 50%; }
+    .add-item-form input.ng-invalid {
+      border: 1px solid red; }
+  .add-item-form .add-item-submit {
+    background: #485774;
+    border: none;
+    cursor: pointer;
+    width: 100%; }
+    .add-item-form .add-item-submit:disabled {
+      cursor: not-allowed; }
+    .add-item-form .add-item-submit:hover {
+      background: #EAEFF3;
+      border: 1px solid #485774; }
+
+.is-centered {
+  text-align: center; }
+
+.is-flex {
+  display: flex; }
+
+.light-bottom-border {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05); }
+
+.light-upper-border {
+  border-top: 1px solid rgba(0, 0, 0, 0.05); }
+
+.is-hidden {
+  display: none; }
+
+.is-affixed {
+  visibility: visible;
+  transform: translateY(-65px);
+  position: fixed;
+  background: #fff;
+  box-shadow: 0 2px 2px -2px rgba(0, 0, 0, 0.15); }

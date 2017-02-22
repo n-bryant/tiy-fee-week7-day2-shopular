@@ -1,0 +1,50 @@
+body {
+  color: $navy;
+  font: 16px/1.6 helvetica;
+}
+
+button {
+  color: $lightBlue;
+  font: 16px/1.6 helvetica;
+}
+
+caption {
+  color: $beige;
+  font: 800 2rem helvetica;
+}
+
+table {
+  th {
+    color: $lightBlue;
+  }
+}
+
+.add-item-form {
+  h2 {
+    font-size: 2rem;
+    text-decoration: underline;
+  }
+
+  input{
+    color: $navy;
+    font: 16px/1.6 helvetica;
+  }
+
+  .add-item-submit {
+    &:hover {
+      color: $navy;
+    }
+  }
+}
+
+.login-form {
+  input {
+    color: $navy;
+    font: 16px/1.6 helvetica;
+  }
+  button {
+    &:hover {
+      color: $navy;
+    }
+  }
+}

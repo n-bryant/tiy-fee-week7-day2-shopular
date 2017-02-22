@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang='en' ng-app="shop">
+    <head>
+        <meta charset='UTF-8'>
+        <meta content="width=device-width, initial-scale=1" name="viewport">
+        <title>Shopular</title>
+        <link rel="stylesheet" href="./lib/styles/main.css">
+    </head>
+    <body ng-controller="ShopController as shopCtrl">
+      <header ng-controller="UserController as userCtrl" class="is-hidden">
+        <div class="welcome-container">
+          <h1>Welcome: {{userCtrl.currentUser.name}}</h1>
+          <span>Last Login: {{userCtrl.currentUser.loggedInDate | date: "MM.dd"}} - {{userCtrl.currentUser.loggedInDate | date: "hh.mm.a"}}</span>
+        </div>
+      </header>
+
+      <section ng-controller="UserController as userCtrl" ng-show="!userCtrl.loggedIn" class="login-container">
+        <form name="loginForm" class="login-form is-flex" ng-submit="userCtrl.authenticate(loginForm.username.$viewValue)" novalidate>
+          <input ng-model="username" ng-required="true" class="is-centered" type="text" name="username" placeholder="username">
+          <button class="login-submit" ng-disabled="loginForm.$invalid">Log In</button>
+        </form>
+      </section>
+
+      <main class="is-hidden">
+        <div class="toggles-container">
+          <button ng-click="shopCtrl.updateNationality()" class="nation-toggle">UK/US</button>
+          <button ng-click="shopCtrl.showAddItemForm()" class="form-toggle">Add Item</button>
+        </div>
+
+        <table class="inventory-table">
+          <caption>Item Shop</caption>
+          <tbody>
+            <tr>
+              <th ng-click="shopCtrl.sortType = 'name'; shopCtrl.sortReverse = !shopCtrl.sortReverse">
+                <span>name</span>
+                <span ng-show="shopCtrl.sortType == 'name' && !shopCtrl.sortReverse">v</span>
+                <span ng-show="shopCtrl.sortType == 'name' && shopCtrl.sortReverse">^</span>
+              </th>
+              <th ng-click="shopCtrl.sortType = 'color'; shopCtrl.sortReverse = !shopCtrl.sortReverse" class="color" data-nat="us">
+                <span>color</span>
+                <span ng-show="shopCtrl.sortType == 'color' && !shopCtrl.sortReverse">v</span>
+                <span ng-show="shopCtrl.sortType == 'color' && shopCtrl.sortReverse">^</span>
+              </th>
+              <th ng-click="shopCtrl.sortType = 'quantity'; shopCtrl.sortReverse = !shopCtrl.sortReverse">
+                <span>quantity</span>
+                <span ng-show="shopCtrl.sortType == 'quantity' && !shopCtrl.sortReverse">v</span>
+                <span ng-show="shopCtrl.sortType == 'quantity' && shopCtrl.sortReverse">^</span>
+              </th>
+              <th ng-click="shopCtrl.sortType = 'price'; shopCtrl.sortReverse = !shopCtrl.sortReverse">
+                <span>price</span>
+                <span ng-show="shopCtrl.sortType == 'price' && !shopCtrl.sortReverse">v</span>
+                <span ng-show="shopCtrl.sortType == 'price' && shopCtrl.sortReverse">^</span>
+              </th>
+              <th ng-click="shopCtrl.sortType = 'discount'; shopCtrl.sortReverse = !shopCtrl.sortReverse">
+                <span>discounted</span>
+                <span ng-show="shopCtrl.sortType == 'discount' && !shopCtrl.sortReverse">v</span>
+                <span ng-show="shopCtrl.sortType == 'discount' && shopCtrl.sortReverse">^</span>
+              </th>
+            </tr>
+            <tr class="inventory-container" ng-repeat="item in shopCtrl.allItems | orderBy:shopCtrl.sortType:shopCtrl.sortReverse" data-id="{{item.id}}">
+              <td class="name" data-nat="us">{{item.name}}</td>
+              <td>{{item.color}}</td>
+              <td>{{item.quantity}}</td>
+              <td class="price" data-nat="us">{{((item.price - item.discount) + (item.price * 0.0575)) | currency : "$" : 2 }}</td>
+              <td><img ng-show="{{item.discount}}" src="https://tiy-learn-content.s3.amazonaws.com/98350f05-sale_2.png"></td>
+            </tr>
+          </tbody>
+        </table>
+
+
+        <form name="addItemForm" class="add-item-form is-flex is-hidden"
+              ng-submit="shopCtrl.create(addItemForm.itemName.$viewValue, addItemForm.itemPrice.$viewValue, addItemForm.itemQuantity.$viewValue, addItemForm.itemColor.$viewValue, addItemForm.itemDiscount.$viewValue)"
+              novalidate
+        >
+          <h2>Add Item</h2>
+          <input type="text" ng-model="itemName" ng-required="true" name="itemName" placeholder="Name">
+          <input type="number" ng-model="itemPrice" ng-required="true" name="itemPrice" min="0" step="0.01" placeholder="Price">
+          <input type="number" ng-model="itemQuantity" ng-required="true" name="itemQuantity" min="1" placeholder="Quantity">
+          <input type="text" ng-model="itemColor" ng-required="true" name="itemColor" placeholder="Color">
+          <input type="number" ng-model="itemDiscount" ng-required="true" name="itemDiscount" min="0" step="0.01" placeholder="Discount">
+          <button class="add-item-submit" ng-disabled="addItemForm.$invalid">Add Item</button>
+        </form>
+      </main>
+
+      <script src="./node_modules/angular/angular.js"></script>
+      <script src="./node_modules/angular-ui-router/release/angular-ui-router.min.js"></script>
+      <script src="./node_modules/angular-local-storage/dist/angular-local-storage.min.js"></script>
+      <script src="./src/js/app.js"></script>
+      <script src="./src/js/services/inventoryService.js"></script>
+      <script src="./src/js/services/local-storage-service.js"></script>
+      <script src="./src/js/services/user-managment-service.js"></script>
+    </body>
+</html>
